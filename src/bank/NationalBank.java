@@ -25,7 +25,7 @@ public class NationalBank {
             if (b.getName().equals(name))
                 return b;
         }
-        throw new BankNotFoundException();
+        throw new BankNotFoundException(name);
     }
 
     public void registerBank(Bank bank) {

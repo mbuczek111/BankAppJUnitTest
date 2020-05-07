@@ -24,11 +24,6 @@ public class DepositAccount extends Account {
         return null;
     }
 
-    /**
-     * For example current balance is +100 (plus 100)
-     * percentage is 3%
-     * after applying percentage current balance should be +103
-     */
     @Override
     public BigDecimal applyPercentage() {
         if(this.getBalance().compareTo(BigDecimal.ZERO) >= 0)

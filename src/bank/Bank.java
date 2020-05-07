@@ -24,8 +24,7 @@ public class Bank {
             if (a.getAccountNumber()==(number))
                 return a;
         }
-        throw new AccountNotFoundException();
-        //TODO: implement the method
+        throw new AccountNotFoundException(number, this.name);
     }
 
     public void addAccount(Account account) {
