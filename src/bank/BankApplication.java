@@ -14,26 +14,6 @@ public class BankApplication {
 
         init();
 
-    }
-
-    private static void init() {
-        NationalBank nb = NationalBank.getInstance();
-
-        Bank alior = new Bank(ALIOR_BANK_NAME);
-        Bank mbank = new Bank(MBANK_BANK_NAME);
-
-        nb.registerBank(alior);
-        nb.registerBank(mbank);
-
-        Account aliorDeposit = new DepositAccount(BigDecimal.valueOf(0.05));
-        Account aliorCredit = new CreditAccount(BigDecimal.valueOf(0.1), BigDecimal.valueOf(-1_000));
-        alior.addAccount(aliorCredit);
-        alior.addAccount(aliorDeposit);
-
-        Account mbankDeposit = new DepositAccount(BigDecimal.valueOf(0.45));
-        Account mbankCredit = new CreditAccount(BigDecimal.valueOf(6), BigDecimal.valueOf(5_000));
-        mbank.addAccount(mbankCredit);
-        mbank.addAccount(mbankDeposit);
         try {
             System.out.println(nb.getByName("Alior"));
         }
@@ -76,6 +56,28 @@ public class BankApplication {
 
         System.out.println(aliorDeposit.getTransactionHistory());
         System.out.println(aliorCredit.getTransactionHistory());
+
+    }
+
+    private static void init() {
+        NationalBank nb = NationalBank.getInstance();
+
+        Bank alior = new Bank(ALIOR_BANK_NAME);
+        Bank mbank = new Bank(MBANK_BANK_NAME);
+
+        nb.registerBank(alior);
+        nb.registerBank(mbank);
+
+        Account aliorDeposit = new DepositAccount(BigDecimal.valueOf(0.05));
+        Account aliorCredit = new CreditAccount(BigDecimal.valueOf(0.1), BigDecimal.valueOf(-1_000));
+        alior.addAccount(aliorCredit);
+        alior.addAccount(aliorDeposit);
+
+        Account mbankDeposit = new DepositAccount(BigDecimal.valueOf(0.45));
+        Account mbankCredit = new CreditAccount(BigDecimal.valueOf(6), BigDecimal.valueOf(5_000));
+        mbank.addAccount(mbankCredit);
+        mbank.addAccount(mbankDeposit);
+
     }
 
 }
