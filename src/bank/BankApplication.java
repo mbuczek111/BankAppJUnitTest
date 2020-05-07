@@ -80,5 +80,4 @@ public class BankApplication {
         mbank.addAccount(mbankDeposit);
 
     }
-
 }
