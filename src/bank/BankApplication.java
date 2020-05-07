@@ -13,6 +13,7 @@ public class BankApplication {
     public static void main(String[] args) {
 
         init();
+        NationalBank nb = NationalBank.getInstance();
 
         try {
             System.out.println(nb.getByName("Alior"));
@@ -21,41 +22,41 @@ public class BankApplication {
             System.out.println(e.getMessage());
         }
         try {
-            aliorDeposit.transferMoney("Alior Bank", 4, BigDecimal.valueOf(0));
+            nb.getByName(ALIOR_BANK_NAME).getByNumber(1).transferMoney("Alior Bank", 4, BigDecimal.valueOf(0));
         }
         catch(AccountNotFoundException e) {
             System.out.println(e.getMessage());
         }
         try {
-            aliorDeposit.withDraw(BigDecimal.valueOf(1000));
+            nb.getByName(ALIOR_BANK_NAME).getByNumber(1).withDraw(BigDecimal.valueOf(1000));
         }
         catch(NonSufficientFundsException e) {
             System.out.println(e.getMessage());
         }
 
         System.out.println(nb.getByName("Alior Bank"));
-        aliorDeposit.topUp(BigDecimal.valueOf(10000));
-        aliorDeposit.withDraw(BigDecimal.valueOf(3000));
+        nb.getByName(ALIOR_BANK_NAME).getByNumber(1).topUp(BigDecimal.valueOf(10000));
+        nb.getByName(ALIOR_BANK_NAME).getByNumber(1).withDraw(BigDecimal.valueOf(3000));
         System.out.println(nb.getByName("Alior Bank"));
-        aliorDeposit.transferMoney("Alior Bank", 2, BigDecimal.valueOf(2000));
+        nb.getByName(ALIOR_BANK_NAME).getByNumber(1).transferMoney("Alior Bank", 2, BigDecimal.valueOf(2000));
         System.out.println(nb.getByName("Alior Bank"));
         try {
-            aliorCredit.withDraw(BigDecimal.valueOf(4000));
+            nb.getByName(ALIOR_BANK_NAME).getByNumber(2).withDraw(BigDecimal.valueOf(4000));
         }
         catch(ReachedCreditLimitException e)
         {
             System.out.println(e.getMessage());
         }
-        aliorCredit.withDraw(BigDecimal.valueOf(2500));
+        nb.getByName(ALIOR_BANK_NAME).getByNumber(2).withDraw(BigDecimal.valueOf(2500));
         System.out.println(nb.getByName("Alior Bank"));
-        aliorCredit.applyPercentage();
-        aliorDeposit.applyPercentage();
+        nb.getByName(ALIOR_BANK_NAME).getByNumber(2).applyPercentage();
+        nb.getByName(ALIOR_BANK_NAME).getByNumber(1).applyPercentage();
         System.out.println(nb.getByName("Alior Bank"));
-        aliorDeposit.transferMoney("mBank",3,BigDecimal.valueOf(1000));
+        nb.getByName(ALIOR_BANK_NAME).getByNumber(1).transferMoney("mBank",3,BigDecimal.valueOf(1000));
         System.out.println(nb.getByName("mBank"));
 
-        System.out.println(aliorDeposit.getTransactionHistory());
-        System.out.println(aliorCredit.getTransactionHistory());
+        System.out.println(nb.getByName(ALIOR_BANK_NAME).getByNumber(1).getTransactionHistory());
+        System.out.println(nb.getByName(ALIOR_BANK_NAME).getByNumber(2).getTransactionHistory());
 
     }
 
