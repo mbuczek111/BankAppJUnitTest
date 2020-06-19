@@ -26,5 +26,6 @@ public class BankTest {
         nb.registerBank(alior);
         AccountNotFoundException exception = assertThrows(AccountNotFoundException.class, () -> nb.getByName("Alior Bank").getByNumber(1).transferMoney("Alior Bank", 4, BigDecimal.valueOf(0)));
         assertThat(exception.getMessage()).contains("Account not found");
+        // some comment
     }
 }

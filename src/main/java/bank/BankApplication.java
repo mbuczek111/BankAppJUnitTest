@@ -70,12 +70,12 @@ public class BankApplication {
         nb.registerBank(mbank);
 
         Account aliorDeposit = new DepositAccount(BigDecimal.valueOf(0.05));
-        Account aliorCredit = new CreditAccount(BigDecimal.valueOf(0.1), BigDecimal.valueOf(-1_000));
+        Account aliorCredit = new CreditAccount(BigDecimal.valueOf(0.1), BigDecimal.valueOf(-1000));
         alior.addAccount(aliorCredit);
         alior.addAccount(aliorDeposit);
 
         Account mbankDeposit = new DepositAccount(BigDecimal.valueOf(0.45));
-        Account mbankCredit = new CreditAccount(BigDecimal.valueOf(6), BigDecimal.valueOf(5_000));
+        Account mbankCredit = new CreditAccount(BigDecimal.valueOf(6), BigDecimal.valueOf(5000));
         mbank.addAccount(mbankCredit);
         mbank.addAccount(mbankDeposit);
 
